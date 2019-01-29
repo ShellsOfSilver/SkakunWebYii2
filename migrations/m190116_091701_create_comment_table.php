@@ -52,6 +52,7 @@ class m190116_091701_create_comment_table extends Migration
             'id',
             'CASCADE'
         );
+
     }
 
     /**

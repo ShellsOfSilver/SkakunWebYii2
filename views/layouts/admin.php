@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use app\widgets\Alert;
@@ -41,6 +42,7 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/admin/default/index']],
             ['label' => 'Articles', 'url' => ['/admin/article/index']],
             ['label' => 'Categories', 'url' => ['/admin/category/index']],
+            ['label' => 'Commentaries', 'url' => ['/admin/comment/index']],
             ['label' => 'Tag', 'url' => ['/admin/tag/index']],
         ],
     ]);
@@ -65,6 +67,14 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
+<?php $this->registerJsFile('/ckeditor/ckeditor.js'); ?>
+<?php $this->registerJsFile('/ckfinder/ckfinder.js'); ?>
+<script>
+    $(document).ready(function(){
+        var editor = CKEDITOR.replaceAll();
+        CKFinder.setupCKEditor(editor);
+    });
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>
