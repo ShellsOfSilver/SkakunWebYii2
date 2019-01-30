@@ -67,13 +67,13 @@ AppAsset::register($this);
 </footer>
 
 <?php $this->endBody() ?>
-<?php $this->registerJsFile('/ckeditor/ckeditor.js'); ?>
-<?php $this->registerJsFile('/ckfinder/ckfinder.js'); ?>
+<?php $this->registerJsFile('/Web/yii/SkakunWeb/web/ckeditor/ckeditor.js'); ?>
+<?php $this->registerJsFile('/Web/yii/SkakunWeb/web/ckfinder/ckfinder.js'); ?>
 <script>
     $(document).ready(function(){
         var editor = CKEDITOR.replaceAll();
-        CKFinder.setupCKEditor(editor);
-    });
+        CKFinder.setupCKEditor( editor );
+    })
 </script>
 </body>
 </html>
