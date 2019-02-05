@@ -57,6 +57,9 @@ PublicAsset::register($this);
                             <li><a href="<?=Url::toRoute(['auth/signup'])?>">Register</a></li>
                         <?php else:?>
                             <?= Html::beginForm(['auth/logout'],'post').
+                            Html::a(Html::img('@web/uploads/'.Yii::$app->user->identity->photo,
+                                ['alt'=>'Profile','width'=>50,'class'=>'img-circle']),
+                                ['/auth/view','id'=>Yii::$app->user->identity->id,['class'=>'btn']]).
                                 Html::submitButton(
                                         'Logout ('.Yii::$app->user->identity->name.')',
                                         ['class'=>'btn btn-link logout', 'style'=>'padding-top:10px']
