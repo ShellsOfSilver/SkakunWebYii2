@@ -6,7 +6,16 @@ use yii\helpers\Url;
 
 <div class="col-md-4" data-sticky_column>
     <div class="primary-sidebar">
-
+        <div class="row">
+            <div class="col-md-10" style="margin-bottom:20px;">
+                <form method="post" action="/Web/yii/SkakunWeb/web/site/search" class="form-horizontal">
+                    <input type="hidden" name="_csrf" value="<?= Yii::$app->request->getCsrfToken() ?>">
+                    <input type="submit" name="search" value="Search" class="btn btn-default pull-right">
+                    <input type="text" name="search_value" class="form-control pull-right" max-length="100"
+                    style="width:60%;margin-right: 10px;">
+                </form>
+            </div>
+        </div>
         <aside class="widget">
             <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
             <?php foreach ($popular as $article):?>

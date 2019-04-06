@@ -71,7 +71,7 @@ class Article extends \yii\db\ActiveRecord
      */
     public function getArticleTags()
     {
-        return $this->hasMany(ArticleTag::className(), ['article_id' => 'id']);
+        return $this->getTags()->all();
     }
 
     /**
@@ -98,6 +98,25 @@ class Article extends \yii\db\ActiveRecord
     {
         $this->deleteImage();
         return parent::beforeDelete();
+
+    }
+
+    public static function getRandom()
+    {
+        $query=Article::find()->all();
+        return $query[array_rand($query,1)];
+
+    }
+    public static function findAll($search,$pageSize=5)
+    {
+
+        $query=Article::find()->where(['like','title', $search])->orWhere(['like', 'content', $search]);
+        $count =$query->count();
+        $pagination= new Pagination(['totalCount'=>$count,'pageSize'=>6]);
+        $articles = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+        $data['articles'] = $articles;
+        $data['pagination'] = $pagination;
+        return $data;
 
     }
 

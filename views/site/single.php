@@ -25,8 +25,14 @@ use yii\helpers\Url;
 
                         </header>
                         <div class="entry-content">
-                            <p><?= $article->content; ?>
-                            </p>
+                            <p><?= $article->content; ?></p>
+                        </div>
+                        <div>
+                            <?php foreach($tags as $tag): ?>
+                                <a href="<?= Url::toRoute(['site/tag','id'=>$tag->id]) ?>" class="btn btn-default">
+                                    <?= $tag->title ?>
+                                </a>
+                            <?php endforeach;?>
                         </div>
                         <div class="decoration">
                             <a href="#" class="btn btn-default">Decoration</a>

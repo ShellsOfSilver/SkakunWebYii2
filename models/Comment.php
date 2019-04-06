@@ -86,4 +86,8 @@ class Comment extends \yii\db\ActiveRecord
         $this->status = self::STATUS_DISALLOW;
         return $this->save(false);
     }
+
+    public static function getRecentComment($countComment){
+        return Comment::find()->where(['status'=>1])->orderBy('date asc')->limit($countComment)->all();
+    }
 }
